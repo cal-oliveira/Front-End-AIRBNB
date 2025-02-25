@@ -1,0 +1,33 @@
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-20"
+>
+  <div
+    *ngFor="let accomodation of filteredAccomodations"
+    class="w-full max-w-[280px] rounded-xl overflow-hidden shadow-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+  >
+    <img
+      [src]="accomodation.Imagem"
+      alt="Imagem da acomodação"
+      class="w-full h-48 object-cover"
+    />
+
+    <div class="p-4">
+      <div class="flex justify-between items-start">
+        <h3 class="text-lg font-semibold">
+          {{ accomodation.Cidade }}, {{ accomodation.Estado }}
+        </h3>
+        <div class="flex items-center gap-1">
+          ⭐ <span class="text-sm font-medium">4.8</span>
+          <!-- Pode ser dinâmico -->
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-1">
+        {{ accomodation.Descricao }}
+      </p>
+      <p class="mt-2 text-base font-semibold">
+        R$ {{ accomodation["Preço por noite/diária"] }} / noite
+      </p>
+    </div>
+  </div>
+</div>

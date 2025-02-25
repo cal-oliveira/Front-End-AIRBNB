@@ -1,0 +1,89 @@
+<div
+  class="shadow-lg bg-white w-[420px] h-[367px] flex flex-col gap-5 p-10 rounded-[40px]"
+>
+  <!-- Adultos -->
+  <div class="flex justify-between items-center">
+    <div>
+      <p class="text-base text-black font-semibold">Adultos</p>
+      <p class="text-sm text-[#5B5B5B]">13 anos ou mais</p>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <button (click)="adultos = adultos > 0 ? adultos - 1 : 0">
+        <lucide-angular
+          [img]="CircleMinus"
+          class="size-5 text-[#717171] cursor-pointer"
+        ></lucide-angular>
+      </button>
+      <span class="font-semibold">{{ adultos }}</span>
+      <button (click)="adultos = adultos + 1">
+        <lucide-angular
+          [img]="CirclePlus"
+          class="size-5 text-[#717171] cursor-pointer"
+        ></lucide-angular>
+      </button>
+    </div>
+  </div>
+
+  <app-horizontal-bar></app-horizontal-bar>
+
+  <!-- Crianças -->
+  <div class="flex justify-between items-center opacity-50 pointer-events-none">
+    <div>
+      <p class="text-base text-black font-semibold">Crianças</p>
+      <p class="text-sm text-[#5B5B5B]">De 2 a 12 anos</p>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <lucide-angular
+        [img]="CircleMinus"
+        class="size-5 text-[#D9D9D9]"
+      ></lucide-angular>
+      <span class="font-semibold">0</span>
+      <lucide-angular
+        [img]="CirclePlus"
+        class="size-5 text-[#D9D9D9]"
+      ></lucide-angular>
+    </div>
+  </div>
+
+  <app-horizontal-bar></app-horizontal-bar>
+
+  <!-- Bebês -->
+  <div class="flex justify-between items-center opacity-50 pointer-events-none">
+    <div>
+      <p class="text-base text-black font-semibold">Bebês</p>
+      <p class="text-sm text-[#5B5B5B]">Menor de 2</p>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <lucide-angular
+        [img]="CircleMinus"
+        class="size-5 text-[#D9D9D9]"
+      ></lucide-angular>
+      <span class="font-semibold">0</span>
+      <lucide-angular
+        [img]="CirclePlus"
+        class="size-5 text-[#D9D9D9]"
+      ></lucide-angular>
+    </div>
+  </div>
+
+  <app-horizontal-bar></app-horizontal-bar>
+
+  <!-- Pets -->
+  <div class="flex justify-between items-center opacity-50 pointer-events-none">
+    <div>
+      <p class="text-base text-black font-semibold">Pets</p>
+      <p class="text-sm text-[#5B5B5B]">Vai levar um animal de serviço?</p>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <lucide-angular
+        [img]="CircleMinus"
+        class="size-5 text-[#D9D9D9]"
+      ></lucide-angular>
+      <span class="font-semibold">0</span>
+      <lucide-angular
+        [img]="CirclePlus"
+        class="size-5 text-[#D9D9D9]"
+      ></lucide-angular>
+    </div>
+  </div>
+</div>

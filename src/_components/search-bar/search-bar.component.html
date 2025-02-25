@@ -1,0 +1,125 @@
+<div
+  class="search-bar-shadow grid grid-cols-[30%_auto_auto_30%] h-16 w-[750px] p-3 items-center"
+>
+  <!-- DESTINO -->
+  <div
+    class="flex justify-between items-center h-full cursor-pointer"
+    (click)="openFilterByLocationOverlay($event)"
+  >
+    <div class="flex flex-col ml-10 cursor-pointer">
+      <p class="text-xs font-semibold">Onde</p>
+      <button
+        (click)="openFilterByLocationOverlay($event)"
+        class="text-xs text-[#757575] placeholder-[#757575] outline-none bg-transparent cursor-pointer"
+      >
+        {{ cidadeSelecionada || "Buscar destinos" }}
+      </button>
+    </div>
+
+    <!-- Overlay do Filter-by-Location -->
+    <ng-template #filterByLocationOverlay>
+      <div
+        class="shadow-2xl bg-white w-[300px] p-0 rounded-[40px] filter-by-location-view"
+      >
+        <app-filter-by-location
+          (cidadeSelecionadaEvent)="onCidadeSelecionada($event)"
+        ></app-filter-by-location>
+      </div>
+    </ng-template>
+
+    <div class="h-full">
+      <app-vertical-bar></app-vertical-bar>
+    </div>
+  </div>
+
+  <!-- CHECK-IN -->
+  <div class="flex justify-around items-center h-full">
+    <div class="relative inline-block">
+      <div
+        class="flex flex-col cursor-pointer"
+        (click)="toggleCalendarCheckIn($event)"
+      >
+        <p class="text-xs font-semibold">Check-in</p>
+        <span class="text-xs text-[#757575]">
+          {{
+            selectedCheckIn
+              ? (selectedCheckIn | date : "dd/MM/yyyy")
+              : "Insira as datas"
+          }}
+        </span>
+      </div>
+    </div>
+
+    <ng-template #calendarOverlayCheckIn>
+      <div
+        class="shadow-2xl bg-white w-[600px] p-0 rounded-[40px] calendar-view"
+      >
+        <mat-calendar
+          [(selected)]="selectedCheckIn"
+          (selectedChange)="onDateSelected('check-in', $event)"
+        ></mat-calendar>
+      </div>
+    </ng-template>
+
+    <div class="h-full">
+      <app-vertical-bar></app-vertical-bar>
+    </div>
+  </div>
+
+  <!-- CHECK-OUT -->
+  <div class="flex justify-around items-center h-full">
+    <div class="relative inline-block">
+      <div
+        class="flex flex-col cursor-pointer"
+        (click)="toggleCalendarCheckOut($event)"
+      >
+        <p class="text-xs font-semibold">Check-out</p>
+        <span class="text-xs text-[#757575]">
+          {{
+            selectedCheckOut
+              ? (selectedCheckOut | date : "dd/MM/yyyy")
+              : "Insira as datas"
+          }}
+        </span>
+      </div>
+    </div>
+
+    <ng-template #calendarOverlayCheckOut>
+      <div
+        class="shadow-2xl bg-white w-[600px] p-0 rounded-[40px] calendar-view"
+      >
+        <mat-calendar
+          [(selected)]="selectedCheckOut"
+          (selectedChange)="onDateSelected('check-out', $event)"
+        ></mat-calendar>
+      </div>
+    </ng-template>
+
+    <div class="h-full">
+      <app-vertical-bar></app-vertical-bar>
+    </div>
+  </div>
+
+  <!-- HÓSPEDES -->
+  <div class="flex justify-between relative">
+    <button
+      (click)="openGuestsOverlay($event)"
+      class="flex flex-col justify-center items-start cursor-pointer"
+    >
+      <p class="text-xs font-semibold">Quem</p>
+      <span class="text-xs text-[#757575]">Hóspedes</span>
+    </button>
+
+    <ng-template #guestsOverlay>
+      <div class="shadow-2xl bg-white w-[300px] p-0 rounded-[40px] guest-view">
+        <app-guests></app-guests>
+      </div>
+    </ng-template>
+
+    <div
+      class="bg-[#ff395c] size-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#E51E52] transition-all"
+    >
+      <lucide-angular [img]="search" class="text-white size-4"></lucide-angular>
+    </div>
+  </div>
+</div>
